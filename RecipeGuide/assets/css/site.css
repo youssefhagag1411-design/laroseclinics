@@ -48,6 +48,11 @@ html.lang-ar .ui-en{display:none !important}
             color:var(--cream);font-family:var(--sans);font-size:12.5px;font-weight:500;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--cream);color:var(--olive)}
 @media (max-width:560px){.bar .bt{display:none}.bar img{height:26px}.btn{padding:0 10px;font-size:12px}}
+/* Phones read one language at a time - hide the bilingual option entirely */
+@media (max-width:759px){
+  .seg button[data-m="both"]{display:none}
+  .seg button{min-width:52px;font-size:13.5px}
+}
 
 .cover{position:relative;overflow:hidden;background:var(--sage);color:var(--cream);
        padding:clamp(48px,11vw,104px) 20px clamp(52px,11vw,104px);text-align:center}
@@ -213,6 +218,35 @@ html.lang-ar .ui-en{display:none !important}
 .dis{max-width:64ch;margin:clamp(20px,3.6vw,32px) auto 0;font-size:12.5px;line-height:1.8;
      color:rgba(243,213,181,.76)}
 .dis .ar{font-family:var(--ar);direction:rtl;margin-top:9px}
+
+/* ---------- social buttons ---------- */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;
+      padding:11px 18px;border-radius:999px;text-decoration:none;font-family:var(--sans);
+      font-size:14.5px;font-weight:600;line-height:1;border:1.5px solid transparent;
+      background:var(--cream);color:var(--olive);
+      box-shadow:0 2px 8px rgba(67,69,47,.14);transition:transform .16s,box-shadow .16s,filter .16s}
+.sbtn svg{width:20px;height:20px;flex:none}
+.sbtn:hover,.sbtn:focus-visible{transform:translateY(-2px);box-shadow:0 6px 16px rgba(67,69,47,.24)}
+.sbtn:active{transform:translateY(0)}
+.sbtn .ar{font-family:var(--ar)}
+.sbtn.s-wa{background:#25806B;color:#FFF8EE}
+.sbtn.s-ig{background:#B8497A;color:#FFF8EE}
+.sbtn.s-yt{background:#B33A3A;color:#FFF8EE}
+.sbtn.s-tt{background:#2C2C2C;color:#FFF8EE}
+.sbtn.s-fb{background:#3A5A94;color:#FFF8EE}
+.sbtn.s-rv{background:var(--gold);color:#3A2E15}
+.fbtns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+@media (max-width:560px){
+  .fbtns{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .sbtn{padding:11px 12px;font-size:13.5px;gap:7px}
+}
+
+/* ---------- recurring follow strip ---------- */
+.follow{background:var(--olive);color:var(--cream);padding:clamp(26px,5vw,44px) 0;text-align:center}
+.follow .fh{font-family:var(--disp);font-size:clamp(19px,4vw,27px);line-height:1.25}
+.follow .fh .ar{font-family:var(--ar);direction:rtl}
+.follow .fs{font-size:clamp(13px,2.4vw,15px);color:rgba(243,213,181,.82);margin:7px 0 clamp(14px,2.6vw,20px)}
+.follow .fs .ar{font-family:var(--ar);direction:rtl}
 
 #top{position:fixed;right:12px;bottom:12px;z-index:70;width:44px;height:44px;border-radius:50%;
      border:1px solid rgba(243,213,181,.3);background:rgba(67,69,47,.86);color:var(--cream);

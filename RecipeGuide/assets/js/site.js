@@ -1,23 +1,31 @@
 
 (function(){
   var r=document.documentElement, KEY='larose-lang';
-  function set(m){
+  var MOBILE=window.matchMedia('(max-width:759px)').matches;
+  function set(m,persist){
     r.classList.remove('lang-both','lang-en','lang-ar');
     r.classList.add('lang-'+m);
     var b=document.querySelectorAll('.seg button');
     for(var i=0;i<b.length;i++){b[i].setAttribute('aria-pressed', b[i].dataset.m===m?'true':'false');}
-    try{localStorage.setItem(KEY,m);}catch(e){}
+    if(persist!==false){try{localStorage.setItem(KEY,m);}catch(e){}}
     if(typeof filter==='function' && document.getElementById('q') &&
        document.getElementById('q').value){ filter(); }
   }
-  var saved='both';
-  try{saved=localStorage.getItem(KEY)||'both';}catch(e){}
-  if(['both','en','ar'].indexOf(saved)<0){saved='both';}
+  var saved=null;
+  try{saved=localStorage.getItem(KEY);}catch(e){}
+  if(['both','en','ar'].indexOf(saved)<0){saved=null;}
+  // On a phone never start in bilingual mode - pick the reader's own language.
+  var auto=false, start=saved;
+  if(MOBILE && (start===null || start==='both')){
+    start=/^ar/i.test(navigator.language||navigator.userLanguage||'')?'ar':'en';
+    auto=true;
+  }
+  if(start===null){start='both';auto=true;}
   document.addEventListener('click',function(ev){
     var t=ev.target.closest?ev.target.closest('.seg button'):null;
-    if(t){set(t.dataset.m);}
+    if(t){set(t.dataset.m,true);}
   });
-  set(saved);
+  set(start, !auto);
   // ---- search over the contents index ----
   var q=document.getElementById('q'), qn=document.getElementById('qn');
   function norm(t){
