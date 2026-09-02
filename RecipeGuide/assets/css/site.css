@@ -221,12 +221,14 @@ html.lang-ar .ui-en{display:none !important}
 
 /* ---------- social buttons ---------- */
 .sbtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;
-      padding:11px 18px;border-radius:999px;text-decoration:none;font-family:var(--sans);
-      font-size:14.5px;font-weight:600;line-height:1;border:1.5px solid transparent;
+      padding:11px 18px;border-radius:12px;text-decoration:none;font-family:var(--sans);
+      font-size:14.5px;font-weight:600;line-height:1;border:1.5px solid rgba(255,255,255,.18);
       background:var(--cream);color:var(--olive);
-      box-shadow:0 2px 8px rgba(67,69,47,.14);transition:transform .16s,box-shadow .16s,filter .16s}
+      box-shadow:0 2px 8px rgba(67,69,47,.14);
+      transition:transform .16s,box-shadow .16s,filter .16s,border-color .16s}
 .sbtn svg{width:20px;height:20px;flex:none}
-.sbtn:hover,.sbtn:focus-visible{transform:translateY(-2px);box-shadow:0 6px 16px rgba(67,69,47,.24)}
+.sbtn:hover,.sbtn:focus-visible{transform:translateY(-2px);filter:brightness(1.16) saturate(1.05);
+      border-color:rgba(255,255,255,.42);box-shadow:0 7px 18px rgba(67,69,47,.3)}
 .sbtn:active{transform:translateY(0)}
 .sbtn .ar{font-family:var(--ar)}
 .sbtn.s-wa{background:#25806B;color:#FFF8EE}
@@ -272,8 +274,11 @@ html.lang-ar .ui-en{display:none !important}
 .adct .n{font-size:13px;color:rgba(243,213,181,.8)}
 .adct .n.ar-only{font-family:var(--ar);direction:rtl}
 .adphone span{font-family:var(--disp);font-size:clamp(19px,3.6vw,25px);letter-spacing:.05em}
-.adaddr{display:grid;gap:10px;margin-top:clamp(18px,3.4vw,28px);
-        padding-top:clamp(14px,2.8vw,20px);border-top:1px solid rgba(243,213,181,.22);
+.adbrand{margin-top:clamp(18px,3.4vw,28px);padding-top:clamp(14px,2.8vw,20px);
+         border-top:1px solid rgba(243,213,181,.22);font-size:clamp(10px,2.1vw,11.5px);
+         letter-spacing:.24em;color:rgba(243,213,181,.8)}
+.adbrand .a{font-family:var(--ar);letter-spacing:0;font-size:clamp(12px,2.4vw,14px)}
+.adaddr{display:grid;gap:10px;margin-top:clamp(10px,2vw,14px);
         font-size:12.5px;color:rgba(243,213,181,.8);line-height:1.65}
 .adaddr .a{font-family:var(--ar);direction:rtl}
 .adaddr b{font-weight:600;color:var(--cream)}
@@ -293,6 +298,10 @@ html.lang-ar .ui-en{display:none !important}
 .follow .fh .ar{font-family:var(--ar);direction:rtl}
 .follow .fs{font-size:clamp(13px,2.4vw,15px);color:rgba(243,213,181,.82);margin:7px 0 clamp(14px,2.6vw,20px)}
 .follow .fs .ar{font-family:var(--ar);direction:rtl}
+/* the inline reminder that sits between recipes is lighter than the chapter one */
+.follow.inline{border-radius:16px;margin:clamp(4px,1vw,10px) 0;
+               padding:clamp(20px,4vw,32px) 0}
+.follow.inline .fh{font-size:clamp(17px,3.4vw,23px)}
 
 #top{position:fixed;right:12px;bottom:12px;z-index:70;width:44px;height:44px;border-radius:50%;
      border:1px solid rgba(243,213,181,.3);background:rgba(67,69,47,.86);color:var(--cream);
